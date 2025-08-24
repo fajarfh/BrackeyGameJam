@@ -1,0 +1,293 @@
+[gd_scene load_steps=19 format=3 uid="uid://isje56hhwfru"]
+
+[ext_resource type="Script" uid="uid://hopjdwk5vj50" path="res://scripts/game_manager.gd" id="1_plvai"]
+[ext_resource type="PackedScene" uid="uid://oue177qrdac0" path="res://assets/prefabs/route_1.tscn" id="3_7dxvt"]
+[ext_resource type="FontFile" uid="uid://kh5m2a1qw3ow" path="res://assets/ZenDots-Regular.ttf" id="5_vkcgd"]
+[ext_resource type="PackedScene" uid="uid://ca7p1844xk4hw" path="res://assets/prefabs/Player.tscn" id="13_vnuhc"]
+[ext_resource type="Texture2D" uid="uid://cqw3utptkda2k" path="res://assets/UI/batch_g51_ui_.png" id="15_dsidl"]
+[ext_resource type="Texture2D" uid="uid://duu3rqkjqrg0b" path="res://assets/UI/batch_g53_ui_.png" id="15_nuslc"]
+[ext_resource type="Texture2D" uid="uid://dapv8bod3jjmv" path="res://assets/UI/batch_g50_ui_.png" id="16_04equ"]
+[ext_resource type="Texture2D" uid="uid://bufnxuhqwh5i3" path="res://assets/UI/batch_g12_ui_.png" id="16_re6lg"]
+[ext_resource type="Texture2D" uid="uid://dqcrpe52ui7gn" path="res://assets/UI/batch_g13_ui_.png" id="17_1pn8n"]
+[ext_resource type="Texture2D" uid="uid://b2cqf4pmto6ks" path="res://assets/UI/batch_g52_ui_.png" id="17_4xcco"]
+[ext_resource type="Texture2D" uid="uid://cwg647s38k1en" path="res://assets/UI/batch_g43_ui_.png" id="18_vnuhc"]
+[ext_resource type="Texture2D" uid="uid://buu10ilsgtvnh" path="res://assets/UI/batch_g23_ui_.png" id="19_sgyyf"]
+[ext_resource type="Texture2D" uid="uid://b36ey5rqpwij8" path="res://assets/UI/batch_g20_ui_.png" id="20_blca8"]
+[ext_resource type="Texture2D" uid="uid://cggiin7xt7mpq" path="res://assets/UI/batch_g54_ui_.png" id="24_04equ"]
+[ext_resource type="Texture2D" uid="uid://6bo1ytqia881" path="res://assets/UI/batch_g42_ui_.png" id="25_6rn2f"]
+[ext_resource type="Texture2D" uid="uid://sfgi8gal2bsp" path="res://assets/UI/batch_g26_ui_.png" id="26_plnnl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rn2f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnuhc"]
+
+[node name="LevelTest" type="Node3D" node_paths=PackedStringArray("main_panel", "guide_panel", "credits_panel", "map_panel", "win_panel")]
+process_mode = 3
+script = ExtResource("1_plvai")
+main_panel = NodePath("CanvasLayer/CenterContainer/Main")
+guide_panel = NodePath("CanvasLayer/CenterContainer/Guide")
+credits_panel = NodePath("CanvasLayer/CenterContainer/Credits")
+map_panel = NodePath("CanvasLayer/CenterContainer/Map")
+win_panel = NodePath("CanvasLayer/CenterContainer/Win")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 511.483, 0)
+shadow_enabled = true
+
+[node name="DummyPlayer" parent="." instance=ExtResource("13_vnuhc")]
+process_mode = 1
+transform = Transform3D(0.957496, 0, -0.288447, 0, 1, 0, 0.288447, 0, 0.957496, -1609.37, 1.82749, 975.383)
+max_speed = 88.0
+throttle_delta = 41.0
+acceleration = 8.0
+
+[node name="routes" type="Node3D" parent="."]
+
+[node name="route1" parent="routes" instance=ExtResource("3_7dxvt")]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1034.88, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+follow_viewport_enabled = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Win" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6rn2f")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/Win"]
+layout_mode = 2
+texture = ExtResource("18_vnuhc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/Win"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/Win/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 75
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("15_dsidl")
+stretch_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/CenterContainer/Win/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="Start" type="HBoxContainer" parent="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Restart" type="TextureButton" parent="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start"]
+layout_mode = 2
+texture_normal = ExtResource("16_04equ")
+
+[node name="Credits" type="TextureButton" parent="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start"]
+layout_mode = 2
+texture_normal = ExtResource("17_4xcco")
+
+[node name="Main" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vnuhc")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/Main"]
+layout_mode = 2
+texture = ExtResource("15_nuslc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/Main"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/Main/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_bottom = 50
+
+[node name="Start" type="HBoxContainer" parent="CanvasLayer/CenterContainer/Main/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Start" type="TextureButton" parent="CanvasLayer/CenterContainer/Main/VBoxContainer/MarginContainer/Start"]
+layout_mode = 2
+texture_normal = ExtResource("16_re6lg")
+
+[node name="Guide" type="TextureButton" parent="CanvasLayer/CenterContainer/Main/VBoxContainer/MarginContainer/Start"]
+layout_mode = 2
+texture_normal = ExtResource("17_1pn8n")
+
+[node name="Guide" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vnuhc")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/Guide"]
+layout_mode = 2
+texture = ExtResource("18_vnuhc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/Guide"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/Guide/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 50
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/Guide/VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("19_sgyyf")
+stretch_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/CenterContainer/Guide/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer/Guide/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+theme_override_fonts/normal_font = ExtResource("5_vkcgd")
+theme_override_font_sizes/normal_font_size = 24
+text = "Your porta potty shaped time machine is broken and you're trapped in tunnels of wormholes between space and time. Navigate through the tunnels and portals (glowing holes at the end of tunnels or small ones floating on the space within a tunnel) and find your way out.
+
+CONTROL :
+Space : Throttle
+Right Ctrl : Brake
+TAB : Open Map
+A/Left Arrow : Turn Left
+D/Right Arrow : Turn Right
+W/Up Arrow : Pan Up
+S/Down Arrow : Pan Down"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/CenterContainer/Guide/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="Start" type="HBoxContainer" parent="CanvasLayer/CenterContainer/Guide/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Start" type="TextureButton" parent="CanvasLayer/CenterContainer/Guide/VBoxContainer/MarginContainer3/Start"]
+layout_mode = 2
+texture_normal = ExtResource("20_blca8")
+
+[node name="Credits" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vnuhc")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/Credits"]
+layout_mode = 2
+texture = ExtResource("18_vnuhc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/Credits"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/Credits/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 50
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/Credits/VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("24_04equ")
+stretch_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/CenterContainer/Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer/Credits/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+theme_override_fonts/normal_font = ExtResource("5_vkcgd")
+theme_override_font_sizes/normal_font_size = 24
+text = "Wormhole Pattern:
+Kenney Pattern Pack
+(https://www.kenney.nl/assets/pattern-pack)
+
+Font:
+Zen Dots by Yoshimichi Ohira 
+(https://fonts.google.com/specimen/Zen+Dots)
+
+And you...
+...for playing."
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/CenterContainer/Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="Start" type="HBoxContainer" parent="CanvasLayer/CenterContainer/Credits/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Restart" type="TextureButton" parent="CanvasLayer/CenterContainer/Credits/VBoxContainer/MarginContainer3/Start"]
+layout_mode = 2
+texture_normal = ExtResource("16_04equ")
+
+[node name="Map" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vnuhc")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/Map"]
+layout_mode = 2
+texture = ExtResource("25_6rn2f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/Map"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/Map/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 50
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/Map/VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("26_plnnl")
+stretch_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Main/VBoxContainer/MarginContainer/Start/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Main/VBoxContainer/MarginContainer/Start/Guide" to="." method="_on_guide_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Guide/VBoxContainer/MarginContainer3/Start/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Credits/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
+
+[editable path="DummyPlayer"]

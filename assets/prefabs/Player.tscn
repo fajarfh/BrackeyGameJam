@@ -1,0 +1,133 @@
+[gd_scene load_steps=17 format=3 uid="uid://ca7p1844xk4hw"]
+
+[ext_resource type="Script" uid="uid://ba7wk2hche316" path="res://scripts/player.gd" id="1_jumf5"]
+[ext_resource type="PackedScene" uid="uid://dq0m5utvrp6ps" path="res://assets/prefabs/porta_potty.tscn" id="2_16d5g"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e73ws"]
+points = PackedVector3Array(0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, 0.5, -1, -0.5, -0.5, -1)
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_e73ws"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_plvai"]
+exposure_multiplier = 0.832
+frustum_focus_distance = 43.11
+frustum_focal_length = 17.31
+
+[sub_resource type="Animation" id="Animation_d5kir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e73ws"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.99, 3.02, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.128842, -0.122932, 0), Vector3(-0.133852, 0.0706284, 0), Vector3(-0.237234, -0.0994847, 0), Vector3(0.20162, 0.12775, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vbogn"]
+resource_name = "static"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_plvai"]
+_data = {
+&"RESET": SubResource("Animation_d5kir"),
+&"idle": SubResource("Animation_e73ws"),
+&"static": SubResource("Animation_vbogn")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e73ws"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vbogn"]
+animation = &"static"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d5kir"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_plvai"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vkcgd"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yvmk3"]
+states/Start/position = Vector2(210, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_e73ws")
+states/idle/position = Vector2(384, 64)
+states/static/node = SubResource("AnimationNodeAnimation_vbogn")
+states/static/position = Vector2(389, 155)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_d5kir"), "idle", "static", SubResource("AnimationNodeStateMachineTransition_plvai"), "static", "idle", SubResource("AnimationNodeStateMachineTransition_vkcgd")]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_r2no1"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_yvmk3")
+nodes/StateMachine/position = Vector2(-20, 80)
+node_connections = [&"output", 0, &"StateMachine"]
+
+[node name="DummyPlayer" type="CharacterBody3D" node_paths=PackedStringArray("mesh_body", "player_cam")]
+motion_mode = 1
+script = ExtResource("1_jumf5")
+max_speed = 100.0
+turn_speed = 1.0
+pitch_speed = 1.0
+mesh_body = NodePath("MeshInstance3D")
+player_cam = NodePath("SpringArm3D/Camera3D")
+
+[node name="MeshInstance3D" type="Node3D" parent="."]
+
+[node name="PortaPotty" parent="MeshInstance3D" instance=ExtResource("2_16d5g")]
+transform = Transform3D(8.88178e-16, 2.23517e-08, -0.487427, 0.45, -2.76406e-08, 0, -1.96701e-08, -0.632344, -1.49012e-08, 0.141441, -0.0439606, 1.01294)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_e73ws")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.997883, 0.0650374, 0, -0.0650374, 0.997883, 0, 1.37511, 3.83282)
+shape = SubResource("SeparationRayShape3D_e73ws")
+spring_length = 0.1
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+attributes = SubResource("CameraAttributesPhysical_plvai")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_plvai")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+tree_root = SubResource("AnimationNodeBlendTree_r2no1")
+anim_player = NodePath("../AnimationPlayer")
