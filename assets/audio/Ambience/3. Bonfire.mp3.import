@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8wakwn38clsh"
+path="res://.godot/imported/3. Bonfire.mp3-1fe63335ebda5267e8956ac21c31f82d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Ambience/3. Bonfire.mp3"
+dest_files=["res://.godot/imported/3. Bonfire.mp3-1fe63335ebda5267e8956ac21c31f82d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

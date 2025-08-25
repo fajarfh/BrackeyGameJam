@@ -11,6 +11,7 @@ extends Node3D
 
 func _ready():
 	get_tree().paused = true
+	AudioControl.playBgm("main")
 	#if get_tree().paused:
 		#get_tree().paused = true
 
@@ -49,3 +50,8 @@ func _on_start_pressed():
 func _on_credits_pressed():
 	win_panel.hide()
 	credits_panel.show()
+
+
+func _on_soft_bound_body_entered(body):
+	print("siapa? " + body.name)
+	

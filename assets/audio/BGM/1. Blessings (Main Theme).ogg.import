@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cx8j2sbs0g1y5"
+path="res://.godot/imported/1. Blessings (Main Theme).ogg-8ffde8f3a63cd45fac8a2daf28de6885.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/BGM/1. Blessings (Main Theme).ogg"
+dest_files=["res://.godot/imported/1. Blessings (Main Theme).ogg-8ffde8f3a63cd45fac8a2daf28de6885.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

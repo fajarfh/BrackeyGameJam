@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bj2o8ckj4w88l"
+path="res://.godot/imported/1. Children Playing at a Playground.mp3-cdb2baa7a5842b74a3a3c95a713de8c9.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Ambience/1. Children Playing at a Playground.mp3"
+dest_files=["res://.godot/imported/1. Children Playing at a Playground.mp3-cdb2baa7a5842b74a3a3c95a713de8c9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

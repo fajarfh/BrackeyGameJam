@@ -44,7 +44,7 @@ func _physics_process(delta):
 		moving()
 		mesh_body.rotation.x = lerp(mesh_body.rotation.x,pitch_input,level_speed * delta)
 		
-	transform.basis = transform.basis.rotated(Vector3.UP, turn_input*turn_speed*delta)
+	transform.basis = transform.basis.rotated(transform.basis.y, turn_input*turn_speed*delta)
 	
 	if turn_input == 0:
 		mesh_body.rotation.y = lerp(mesh_body.rotation.y,turn_input,level_speed * snap_speed * delta)

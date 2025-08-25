@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dncsxfoohymam"
+path="res://.godot/imported/4. Stage 2.ogg-45f8036db2dd8184e64d22515cbaef64.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/BGM/4. Stage 2.ogg"
+dest_files=["res://.godot/imported/4. Stage 2.ogg-45f8036db2dd8184e64d22515cbaef64.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

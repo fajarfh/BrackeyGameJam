@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://db35r6nxj78j5"]
+
+[ext_resource type="AudioStream" uid="uid://blxytjcor88e4" path="res://assets/audio/BGM/5. Stage 3.ogg" id="1_0mblk"]
+[ext_resource type="Script" uid="uid://dpj7m5my2h7y1" path="res://scripts/audio_control.gd" id="1_b01dn"]
+[ext_resource type="AudioStream" uid="uid://bj8bivk0vlmhd" path="res://assets/audio/Ambience/2. Therapy Room.mp3" id="3_thwwy"]
+[ext_resource type="AudioStream" uid="uid://dn1lyu5w83sve" path="res://assets/audio/SFX/4. Bubble Pop.mp3" id="4_d3cxp"]
+
+[node name="AudioStreamPlayer" type="Node" node_paths=PackedStringArray("sfx", "bgm", "amb")]
+script = ExtResource("1_b01dn")
+sfx = NodePath("AudioStreamPlayer2")
+bgm = NodePath("AudioStreamPlayer")
+amb = NodePath("AudioStreamPlayer3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0mblk")
+bus = &"BGM"
+parameters/looping = true
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_thwwy")
+bus = &"AMB"
+parameters/looping = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d3cxp")
+bus = &"SFX"
