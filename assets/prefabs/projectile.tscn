@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5x0wld1csrsc"]
+
+[ext_resource type="Script" uid="uid://ditovdsghywet" path="res://scripts/projectile.gd" id="1_py6g8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_e5kbl"]
+size = Vector3(0.05, 0.05, 1)
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_py6g8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_e5kbl")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.365946)
+target_position = Vector3(0, 0, 1)

@@ -19,9 +19,19 @@ var target_speed:float = 0
 var turn_input:float= 0
 var pitch_input:float= 0
 
+var health = 30
+var shootDelay = 0.1
+var canShoot:bool = true
+
+
+var projectile = load("res://assets/prefabs/projectile.tscn")
+var instance
 
 @onready var animation_tree = %AnimationTree
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
+@onready var gun = $MeshInstance3D/dummyGun
+@onready var gun_barrel = $MeshInstance3D/dummyGun/RayCast3D
+
 
 func get_input(delta):
 	if Input.is_action_pressed("throttle_up"):
@@ -45,6 +55,7 @@ func _physics_process(delta):
 		mesh_body.rotation.x = lerp(mesh_body.rotation.x,pitch_input,level_speed * delta)
 		
 	transform.basis = transform.basis.rotated(transform.basis.y, turn_input*turn_speed*delta)
+	print(getPosition())
 	
 	if turn_input == 0:
 		mesh_body.rotation.y = lerp(mesh_body.rotation.y,turn_input,level_speed * snap_speed * delta)
@@ -56,9 +67,33 @@ func _physics_process(delta):
 	forward_speed = lerp(forward_speed, target_speed, acceleration*delta)
 	velocity = -transform.basis.z * forward_speed
 	move_and_slide()
+	
+	#shooting
+	if Input.is_action_pressed("shoot") and canShoot:
+		instance = projectile.instantiate()
+		instance.position = gun_barrel.global_position
+		instance.transform.basis = gun_barrel.global_transform.basis
+		get_parent().add_child(instance)
+		
+		canShoot = false
+		#introducing shoot delay
+		var timer:SceneTreeTimer = get_tree().create_timer(shootDelay)
+		timer.timeout.connect(set.bind("canShoot", true))
+
+		
 
 func moving():
 	state_machine.travel("static")
 
 func idle():
 	state_machine.travel("idle")
+	
+
+func getHealth():
+	return health
+	
+func setHealth(x):
+	health = x
+
+func getPosition():
+	return mesh_body.position

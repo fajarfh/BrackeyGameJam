@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxn422w1hc10q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v6q05"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000677109, -0.0151163, -2.38419e-07)
+mesh = SubResource("BoxMesh_v6q05")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -0.000349066, 0, 0.000349066, 1, 0, 0, 0.718127)
+target_position = Vector3(0, 0, 1)
