@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://isje56hhwfru"]
+[gd_scene load_steps=31 format=3 uid="uid://isje56hhwfru"]
 
 [ext_resource type="Script" uid="uid://hopjdwk5vj50" path="res://scripts/game_manager.gd" id="1_plvai"]
 [ext_resource type="PackedScene" uid="uid://oue177qrdac0" path="res://assets/prefabs/route_1.tscn" id="3_7dxvt"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bufnxuhqwh5i3" path="res://assets/UI/batch_g12_ui_.png" id="16_re6lg"]
 [ext_resource type="Texture2D" uid="uid://dqcrpe52ui7gn" path="res://assets/UI/batch_g13_ui_.png" id="17_1pn8n"]
 [ext_resource type="Texture2D" uid="uid://b2cqf4pmto6ks" path="res://assets/UI/batch_g52_ui_.png" id="17_4xcco"]
+[ext_resource type="Script" uid="uid://dtsm5sv0lhv0p" path="res://scripts/spawner.gd" id="17_nuslc"]
+[ext_resource type="PackedScene" uid="uid://byh1qyq76iwl4" path="res://assets/prefabs/tesitem1.tscn" id="18_re6lg"]
 [ext_resource type="Texture2D" uid="uid://cwg647s38k1en" path="res://assets/UI/batch_g43_ui_.png" id="18_vnuhc"]
 [ext_resource type="Texture2D" uid="uid://buu10ilsgtvnh" path="res://assets/UI/batch_g23_ui_.png" id="19_sgyyf"]
 [ext_resource type="Texture2D" uid="uid://b36ey5rqpwij8" path="res://assets/UI/batch_g20_ui_.png" id="20_blca8"]
@@ -38,12 +40,56 @@ backface_collision = true
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nuslc"]
 data = PackedVector3Array(249.934, -865.798, 432.899, 432.899, -865.798, 249.934, 0, -999.738, 0, 499.869, 0, 865.798, 865.798, 0, 499.869, 749.803, -499.869, 432.899, 749.803, -499.869, 432.899, 432.899, -499.869, 749.803, 499.869, 0, 865.798, 865.798, 0, 499.869, 999.738, 0, 6.12143e-14, 865.798, -499.869, 5.30131e-14, 865.798, -499.869, 5.30131e-14, 749.803, -499.869, 432.899, 865.798, 0, 499.869, 432.899, -499.869, 749.803, 749.803, -499.869, 432.899, 432.899, -865.798, 249.934, 749.803, -499.869, 432.899, 865.798, -499.869, 5.30131e-14, 499.869, -865.798, 3.06071e-14, 499.869, -865.798, 3.06071e-14, 432.899, -865.798, 249.934, 749.803, -499.869, 432.899, 0, 0, 999.738, 499.869, 0, 865.798, 432.899, -499.869, 749.803, 432.899, -499.869, 749.803, 0, -499.869, 865.798, 0, 0, 999.738, 0, -499.869, 865.798, 432.899, -499.869, 749.803, 249.934, -865.798, 432.899, 249.934, -865.798, 432.899, 0, -865.798, 499.869, 0, -499.869, 865.798, 432.899, -865.798, 249.934, 249.934, -865.798, 432.899, 432.899, -499.869, 749.803, 432.899, -865.798, 249.934, 499.869, -865.798, 3.06071e-14, 0, -999.738, 0, 0, -865.798, 499.869, 249.934, -865.798, 432.899, 0, -999.738, 0, 432.899, 499.869, -749.803, 1.06026e-13, 499.869, -865.798, 1.22429e-13, 0, -999.738, 999.738, 0, 6.12143e-14, 865.798, 0, -499.869, 749.803, -499.869, -432.899, 749.803, -499.869, -432.899, 865.798, -499.869, 5.30131e-14, 999.738, 0, 6.12143e-14, 865.798, 0, -499.869, 499.869, 0, -865.798, 432.899, -499.869, -749.803, 432.899, -499.869, -749.803, 749.803, -499.869, -432.899, 865.798, 0, -499.869, 865.798, -499.869, 5.30131e-14, 749.803, -499.869, -432.899, 432.899, -865.798, -249.934, 432.899, -865.798, -249.934, 499.869, -865.798, 3.06071e-14, 865.798, -499.869, 5.30131e-14, 1.06026e-13, -499.869, -865.798, 432.899, -499.869, -749.803, 499.869, 0, -865.798, 499.869, 0, -865.798, 1.22429e-13, 0, -999.738, 1.06026e-13, -499.869, -865.798, 249.934, -865.798, -432.899, 432.899, -865.798, -249.934, 749.803, -499.869, -432.899, 499.869, -865.798, 3.06071e-14, 432.899, -865.798, -249.934, 0, -999.738, 0, 432.899, -865.798, -249.934, 249.934, -865.798, -432.899, 0, -999.738, 0, 249.934, -865.798, -432.899, 6.12143e-14, -865.798, -499.869, 0, -999.738, 0, 749.803, -499.869, -432.899, 432.899, -499.869, -749.803, 249.934, -865.798, -432.899, 432.899, -499.869, -749.803, 1.06026e-13, -499.869, -865.798, 6.12143e-14, -865.798, -499.869, 499.869, 0, 865.798, 0, 0, 999.738, 0, 499.869, 865.798, 865.798, 499.869, 5.30131e-14, 749.803, 499.869, 432.899, 432.899, 865.798, 249.934, 432.899, 865.798, 249.934, 499.869, 865.798, 3.06071e-14, 865.798, 499.869, 5.30131e-14, 432.899, 499.869, 749.803, 749.803, 499.869, 432.899, 865.798, 0, 499.869, 865.798, 0, 499.869, 499.869, 0, 865.798, 432.899, 499.869, 749.803, 749.803, 499.869, 432.899, 865.798, 499.869, 5.30131e-14, 999.738, 0, 6.12143e-14, 999.738, 0, 6.12143e-14, 865.798, 0, 499.869, 749.803, 499.869, 432.899, 749.803, 499.869, 432.899, 432.899, 499.869, 749.803, 249.934, 865.798, 432.899, 0, 865.798, 499.869, 249.934, 865.798, 432.899, 432.899, 499.869, 749.803, 432.899, 499.869, 749.803, 0, 499.869, 865.798, 0, 865.798, 499.869, 499.869, 865.798, 3.06071e-14, 432.899, 865.798, 249.934, 0, 999.738, 0, 249.934, 865.798, 432.899, 432.899, 865.798, 249.934, 749.803, 499.869, 432.899, 249.934, 865.798, 432.899, 0, 865.798, 499.869, 0, 999.738, 0, 432.899, 865.798, 249.934, 249.934, 865.798, 432.899, 0, 999.738, 0, 0, 499.869, 865.798, 432.899, 499.869, 749.803, 499.869, 0, 865.798, 6.12143e-14, -865.798, -499.869, 249.934, -865.798, -432.899, 432.899, -499.869, -749.803, 749.803, 499.869, -432.899, 865.798, 499.869, 5.30131e-14, 499.869, 865.798, 3.06071e-14, 499.869, 865.798, 3.06071e-14, 432.899, 865.798, -249.934, 749.803, 499.869, -432.899, 432.899, 499.869, -749.803, 749.803, 499.869, -432.899, 432.899, 865.798, -249.934, 865.798, 499.869, 5.30131e-14, 749.803, 499.869, -432.899, 865.798, 0, -499.869, 865.798, 0, -499.869, 999.738, 0, 6.12143e-14, 865.798, 499.869, 5.30131e-14, 749.803, 499.869, -432.899, 432.899, 499.869, -749.803, 499.869, 0, -865.798, 499.869, 0, -865.798, 865.798, 0, -499.869, 749.803, 499.869, -432.899, 432.899, 865.798, -249.934, 499.869, 865.798, 3.06071e-14, 0, 999.738, 0, 432.899, 865.798, -249.934, 249.934, 865.798, -432.899, 432.899, 499.869, -749.803, 249.934, 865.798, -432.899, 432.899, 865.798, -249.934, 0, 999.738, 0, 6.12143e-14, 865.798, -499.869, 249.934, 865.798, -432.899, 0, 999.738, 0, 1.06026e-13, 499.869, -865.798, 432.899, 499.869, -749.803, 249.934, 865.798, -432.899, 249.934, 865.798, -432.899, 6.12143e-14, 865.798, -499.869, 1.06026e-13, 499.869, -865.798, 1.22429e-13, 0, -999.738, 499.869, 0, -865.798, 432.899, 499.869, -749.803, -865.798, -499.869, -1.59039e-13, -749.803, -499.869, 432.899, -432.899, -865.798, 249.934, -499.869, 0, 865.798, 0, 0, 999.738, 0, -499.869, 865.798, 0, -499.869, 865.798, -432.899, -499.869, 749.803, -499.869, 0, 865.798, -432.899, -499.869, 749.803, 0, -499.869, 865.798, 0, -865.798, 499.869, 0, -865.798, 499.869, -249.934, -865.798, 432.899, -432.899, -499.869, 749.803, -749.803, -499.869, 432.899, -432.899, -499.869, 749.803, -249.934, -865.798, 432.899, -249.934, -865.798, 432.899, 0, -865.798, 499.869, 0, -999.738, 0, -432.899, -865.798, 249.934, -249.934, -865.798, 432.899, 0, -999.738, 0, -249.934, -865.798, 432.899, -432.899, -865.798, 249.934, -749.803, -499.869, 432.899, -499.869, -865.798, -9.18214e-14, -432.899, -865.798, 249.934, 0, -999.738, 0, -865.798, 0, 499.869, -499.869, 0, 865.798, -432.899, -499.869, 749.803, -432.899, -499.869, 749.803, -749.803, -499.869, 432.899, -865.798, 0, 499.869, -999.738, 0, -1.83643e-13, -865.798, 0, 499.869, -749.803, -499.869, 432.899, -749.803, -499.869, 432.899, -865.798, -499.869, -1.59039e-13, -999.738, 0, -1.83643e-13, -432.899, -865.798, 249.934, -499.869, -865.798, -9.18214e-14, -865.798, -499.869, -1.59039e-13, -865.798, 0, -499.869, -499.869, 0, -865.798, -432.899, 499.869, -749.803, -432.899, -499.869, -749.803, 1.06026e-13, -499.869, -865.798, 1.22429e-13, 0, -999.738, 1.22429e-13, 0, -999.738, -499.869, 0, -865.798, -432.899, -499.869, -749.803, -249.934, -865.798, -432.899, -432.899, -865.798, -249.934, 0, -999.738, 0, 6.12143e-14, -865.798, -499.869, -249.934, -865.798, -432.899, 0, -999.738, 0, -432.899, -865.798, -249.934, -249.934, -865.798, -432.899, -432.899, -499.869, -749.803, -432.899, -865.798, -249.934, -499.869, -865.798, -9.18214e-14, 0, -999.738, 0, -249.934, -865.798, -432.899, 6.12143e-14, -865.798, -499.869, 1.06026e-13, -499.869, -865.798, 1.06026e-13, -499.869, -865.798, -432.899, -499.869, -749.803, -249.934, -865.798, -432.899, -865.798, 0, -499.869, -999.738, 0, -1.83643e-13, -865.798, -499.869, -1.59039e-13, -865.798, -499.869, -1.59039e-13, -749.803, -499.869, -432.899, -865.798, 0, -499.869, -499.869, 0, -865.798, -865.798, 0, -499.869, -749.803, -499.869, -432.899, -749.803, -499.869, -432.899, -432.899, -499.869, -749.803, -499.869, 0, -865.798, -499.869, -865.798, -9.18214e-14, -432.899, -865.798, -249.934, -749.803, -499.869, -432.899, -749.803, -499.869, -432.899, -865.798, -499.869, -1.59039e-13, -499.869, -865.798, -9.18214e-14, -865.798, 0, 499.869, -999.738, 0, -1.83643e-13, -865.798, 499.869, -1.59039e-13, -249.934, 865.798, 432.899, 0, 865.798, 499.869, 0, 499.869, 865.798, 0, 499.869, 865.798, -432.899, 499.869, 749.803, -249.934, 865.798, 432.899, 0, 865.798, 499.869, -249.934, 865.798, 432.899, 0, 999.738, 0, -249.934, 865.798, 432.899, -432.899, 865.798, 249.934, 0, 999.738, 0, -432.899, 865.798, 249.934, -499.869, 865.798, -9.18214e-14, 0, 999.738, 0, -432.899, 865.798, 249.934, -249.934, 865.798, 432.899, -432.899, 499.869, 749.803, -432.899, 499.869, 749.803, 0, 499.869, 865.798, 0, 0, 999.738, 0, 0, 999.738, -499.869, 0, 865.798, -432.899, 499.869, 749.803, -432.899, 499.869, 749.803, -749.803, 499.869, 432.899, -432.899, 865.798, 249.934, -499.869, 865.798, -9.18214e-14, -432.899, 865.798, 249.934, -749.803, 499.869, 432.899, -749.803, 499.869, 432.899, -865.798, 499.869, -1.59039e-13, -499.869, 865.798, -9.18214e-14, -749.803, 499.869, 432.899, -432.899, 499.869, 749.803, -499.869, 0, 865.798, -499.869, 0, 865.798, -865.798, 0, 499.869, -749.803, 499.869, 432.899, -865.798, 499.869, -1.59039e-13, -749.803, 499.869, 432.899, -865.798, 0, 499.869, -432.899, -499.869, -749.803, -749.803, -499.869, -432.899, -432.899, -865.798, -249.934, -432.899, 865.798, -249.934, -249.934, 865.798, -432.899, 0, 999.738, 0, -249.934, 865.798, -432.899, 6.12143e-14, 865.798, -499.869, 0, 999.738, 0, -499.869, 865.798, -9.18214e-14, -432.899, 865.798, -249.934, 0, 999.738, 0, -249.934, 865.798, -432.899, -432.899, 865.798, -249.934, -749.803, 499.869, -432.899, 6.12143e-14, 865.798, -499.869, -249.934, 865.798, -432.899, -432.899, 499.869, -749.803, -432.899, 499.869, -749.803, 1.06026e-13, 499.869, -865.798, 6.12143e-14, 865.798, -499.869, -749.803, 499.869, -432.899, -432.899, 499.869, -749.803, -249.934, 865.798, -432.899, -499.869, 0, -865.798, 1.22429e-13, 0, -999.738, 1.06026e-13, 499.869, -865.798, 1.06026e-13, 499.869, -865.798, -432.899, 499.869, -749.803, -499.869, 0, -865.798, -432.899, 865.798, -249.934, -499.869, 865.798, -9.18214e-14, -865.798, 499.869, -1.59039e-13, -865.798, 499.869, -1.59039e-13, -749.803, 499.869, -432.899, -432.899, 865.798, -249.934, -749.803, 499.869, -432.899, -865.798, 499.869, -1.59039e-13, -999.738, 0, -1.83643e-13, -999.738, 0, -1.83643e-13, -865.798, 0, -499.869, -749.803, 499.869, -432.899, -432.899, 499.869, -749.803, -749.803, 499.869, -432.899, -865.798, 0, -499.869)
+backface_collision = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rn2f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnuhc"]
 
-[node name="LevelTest" type="Node3D" node_paths=PackedStringArray("main_panel", "guide_panel", "credits_panel", "map_panel", "win_panel")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n44uc"]
+
+[sub_resource type="Animation" id="Animation_re6lg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nuslc"]
+resource_name = "loop"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(2.92817, 8),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pn8n"]
+_data = {
+&"RESET": SubResource("Animation_re6lg"),
+&"loop": SubResource("Animation_nuslc")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_re6lg"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="LevelTest" type="Node3D" node_paths=PackedStringArray("main_panel", "guide_panel", "credits_panel", "map_panel", "win_panel", "hud_oob", "spawner")]
 process_mode = 3
 script = ExtResource("1_plvai")
 main_panel = NodePath("CanvasLayer/CenterContainer/Main")
@@ -51,6 +97,8 @@ guide_panel = NodePath("CanvasLayer/CenterContainer/Guide")
 credits_panel = NodePath("CanvasLayer/CenterContainer/Credits")
 map_panel = NodePath("CanvasLayer/CenterContainer/Map")
 win_panel = NodePath("CanvasLayer/CenterContainer/Win")
+hud_oob = NodePath("CanvasLayer/CenterContainer/HUD/Label")
+spawner = NodePath("Spawner")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n44uc")
@@ -59,6 +107,13 @@ environment = SubResource("Environment_n44uc")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 511.483, 0)
 visible = false
 shadow_enabled = true
+
+[node name="DummyPlayer" parent="." instance=ExtResource("13_vnuhc")]
+process_mode = 1
+transform = Transform3D(0.957496, 0, -0.288447, 0, 1, 0, 0.288447, 0, 0.957496, 0, 1382.72, 0)
+max_speed = 88.0
+throttle_delta = 41.0
+acceleration = 8.0
 
 [node name="Boundary" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1382.72, 0)
@@ -77,13 +132,6 @@ shape = SubResource("ConcavePolygonShape3D_nuslc")
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Boundary"]
 flip_faces = true
 radius = 1044.05
-
-[node name="DummyPlayer" parent="Boundary" instance=ExtResource("13_vnuhc")]
-process_mode = 1
-transform = Transform3D(0.957496, 0, -0.288447, 0, 1, 0, 0.288447, 0, 0.957496, 0, 0, 0)
-max_speed = 88.0
-throttle_delta = 41.0
-acceleration = 8.0
 
 [node name="routes" type="Node3D" parent="."]
 visible = false
@@ -328,13 +376,36 @@ stretch_mode = 2
 
 [node name="HUD" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n44uc")
 
 [node name="Label" type="Label" parent="CanvasLayer/CenterContainer/HUD"]
+visible = false
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_vkcgd")
+theme_override_font_sizes/font_size = 36
 text = "OUT OF BOUND"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/CenterContainer/HUD/Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_1pn8n")
+}
+autoplay = "loop"
+
+[node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("enemy_spawn_points")]
+script = ExtResource("17_nuslc")
+enemy = ExtResource("18_re6lg")
+enemy_spawn_points = [NodePath("spawn_areas/CSGSphere3D")]
+
+[node name="spawn_areas" type="Node3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1382.72, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+radius = 100.0
+material = SubResource("StandardMaterial3D_re6lg")
+
 [connection signal="body_entered" from="Boundary/soft bound" to="." method="_on_soft_bound_body_entered"]
+[connection signal="body_exited" from="Boundary/soft bound" to="." method="_on_soft_bound_body_exited"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Main/VBoxContainer/MarginContainer/Start/Start" to="." method="_on_start_pressed"]
@@ -342,4 +413,4 @@ text = "OUT OF BOUND"
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Guide/VBoxContainer/MarginContainer3/Start/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Credits/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
 
-[editable path="Boundary/DummyPlayer"]
+[editable path="DummyPlayer"]

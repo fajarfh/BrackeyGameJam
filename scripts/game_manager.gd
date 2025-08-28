@@ -1,12 +1,13 @@
 extends Node3D
 
-@export var finish_line: Area3D
-
 @export var main_panel: Control
 @export var guide_panel: Control
 @export var credits_panel: Control
 @export var map_panel: Control
 @export var win_panel: Control
+@export var hud_oob: Control
+
+@export var spawner:Node
 
 
 func _ready():
@@ -44,6 +45,7 @@ func _on_guide_pressed():
 func _on_start_pressed():
 	main_panel.hide()
 	guide_panel.hide()
+	spawner.reset_area()
 	get_tree().paused = false
 
 
@@ -53,5 +55,15 @@ func _on_credits_pressed():
 
 
 func _on_soft_bound_body_entered(body):
+	#print("siapa? " + body.name)
+	#hud_oob.show()
+	pass
+
+
+func _on_soft_bound_body_exited(body):
 	print("siapa? " + body.name)
-	
+	if hud_oob.visible:
+		hud_oob.hide()
+	else:	
+		hud_oob.show() #hud_oob.hide() # Replace with function body.
+		

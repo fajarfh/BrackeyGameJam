@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c270qp662r4sl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj5ar"]
+albedo_color = Color(1, 1, 0, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGTorus3D" parent="."]
+material = SubResource("StandardMaterial3D_dj5ar")
