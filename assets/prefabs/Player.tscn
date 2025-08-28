@@ -111,7 +111,6 @@ node_connections = [&"output", 0, &"StateMachine"]
 [node name="DummyPlayer" type="CharacterBody3D" node_paths=PackedStringArray("mesh_body", "player_cam")]
 motion_mode = 1
 script = ExtResource("1_jumf5")
-max_speed = 100.0
 turn_speed = 1.0
 pitch_speed = 1.0
 mesh_body = NodePath("MeshInstance3D")
