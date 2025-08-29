@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c270qp662r4sl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj5ar"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(0.336608, 0.336608, 0.336608, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dj5ar"]
+height = 3.0
+radius = 7.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGTorus3D" parent="."]
+inner_radius = 3.5
+outer_radius = 7.0
+material = SubResource("StandardMaterial3D_dj5ar")
+
+[node name="area_overlap" type="Area3D" parent="."]
+unique_name_in_owner = true
+
+[node name="shape" type="CollisionShape3D" parent="area_overlap"]
+unique_name_in_owner = true
+shape = SubResource("CylinderShape3D_dj5ar")
