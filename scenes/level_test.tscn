@@ -1,4 +1,5 @@
-[gd_scene load_steps=25 format=3 uid="uid://isje56hhwfru"]
+[gd_scene load_steps=32 format=3 uid="uid://isje56hhwfru"]
+
 
 [ext_resource type="Script" uid="uid://hopjdwk5vj50" path="res://scripts/game_manager.gd" id="1_plvai"]
 [ext_resource type="PackedScene" uid="uid://oue177qrdac0" path="res://assets/prefabs/route_1.tscn" id="3_7dxvt"]
@@ -10,10 +11,17 @@
 [ext_resource type="Texture2D" uid="uid://bufnxuhqwh5i3" path="res://assets/UI/batch_g12_ui_.png" id="16_re6lg"]
 [ext_resource type="Texture2D" uid="uid://dqcrpe52ui7gn" path="res://assets/UI/batch_g13_ui_.png" id="17_1pn8n"]
 [ext_resource type="Texture2D" uid="uid://b2cqf4pmto6ks" path="res://assets/UI/batch_g52_ui_.png" id="17_4xcco"]
+
 [ext_resource type="PackedScene" uid="uid://3k6vl5k7xrwp" path="res://assets/prefabs/dummy_enemy.tscn" id="17_nuslc"]
+
+[ext_resource type="Script" uid="uid://dtsm5sv0lhv0p" path="res://scripts/spawner.gd" id="17_nuslc"]
+[ext_resource type="PackedScene" uid="uid://byh1qyq76iwl4" path="res://assets/prefabs/tesitem1.tscn" id="18_re6lg"]
+
 [ext_resource type="Texture2D" uid="uid://cwg647s38k1en" path="res://assets/UI/batch_g43_ui_.png" id="18_vnuhc"]
 [ext_resource type="Texture2D" uid="uid://buu10ilsgtvnh" path="res://assets/UI/batch_g23_ui_.png" id="19_sgyyf"]
+[ext_resource type="PackedScene" uid="uid://dyx7buxihjjae" path="res://assets/prefabs/tesitem2.tscn" id="19_vnuhc"]
 [ext_resource type="Texture2D" uid="uid://b36ey5rqpwij8" path="res://assets/UI/batch_g20_ui_.png" id="20_blca8"]
+[ext_resource type="PackedScene" uid="uid://c270qp662r4sl" path="res://assets/prefabs/tesitem3.tscn" id="20_sgyyf"]
 [ext_resource type="Texture2D" uid="uid://cggiin7xt7mpq" path="res://assets/UI/batch_g54_ui_.png" id="24_04equ"]
 [ext_resource type="Texture2D" uid="uid://6bo1ytqia881" path="res://assets/UI/batch_g42_ui_.png" id="25_6rn2f"]
 [ext_resource type="Texture2D" uid="uid://sfgi8gal2bsp" path="res://assets/UI/batch_g26_ui_.png" id="26_plnnl"]
@@ -39,19 +47,67 @@ backface_collision = true
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nuslc"]
 data = PackedVector3Array(249.934, -865.798, 432.899, 432.899, -865.798, 249.934, 0, -999.738, 0, 499.869, 0, 865.798, 865.798, 0, 499.869, 749.803, -499.869, 432.899, 749.803, -499.869, 432.899, 432.899, -499.869, 749.803, 499.869, 0, 865.798, 865.798, 0, 499.869, 999.738, 0, 6.12143e-14, 865.798, -499.869, 5.30131e-14, 865.798, -499.869, 5.30131e-14, 749.803, -499.869, 432.899, 865.798, 0, 499.869, 432.899, -499.869, 749.803, 749.803, -499.869, 432.899, 432.899, -865.798, 249.934, 749.803, -499.869, 432.899, 865.798, -499.869, 5.30131e-14, 499.869, -865.798, 3.06071e-14, 499.869, -865.798, 3.06071e-14, 432.899, -865.798, 249.934, 749.803, -499.869, 432.899, 0, 0, 999.738, 499.869, 0, 865.798, 432.899, -499.869, 749.803, 432.899, -499.869, 749.803, 0, -499.869, 865.798, 0, 0, 999.738, 0, -499.869, 865.798, 432.899, -499.869, 749.803, 249.934, -865.798, 432.899, 249.934, -865.798, 432.899, 0, -865.798, 499.869, 0, -499.869, 865.798, 432.899, -865.798, 249.934, 249.934, -865.798, 432.899, 432.899, -499.869, 749.803, 432.899, -865.798, 249.934, 499.869, -865.798, 3.06071e-14, 0, -999.738, 0, 0, -865.798, 499.869, 249.934, -865.798, 432.899, 0, -999.738, 0, 432.899, 499.869, -749.803, 1.06026e-13, 499.869, -865.798, 1.22429e-13, 0, -999.738, 999.738, 0, 6.12143e-14, 865.798, 0, -499.869, 749.803, -499.869, -432.899, 749.803, -499.869, -432.899, 865.798, -499.869, 5.30131e-14, 999.738, 0, 6.12143e-14, 865.798, 0, -499.869, 499.869, 0, -865.798, 432.899, -499.869, -749.803, 432.899, -499.869, -749.803, 749.803, -499.869, -432.899, 865.798, 0, -499.869, 865.798, -499.869, 5.30131e-14, 749.803, -499.869, -432.899, 432.899, -865.798, -249.934, 432.899, -865.798, -249.934, 499.869, -865.798, 3.06071e-14, 865.798, -499.869, 5.30131e-14, 1.06026e-13, -499.869, -865.798, 432.899, -499.869, -749.803, 499.869, 0, -865.798, 499.869, 0, -865.798, 1.22429e-13, 0, -999.738, 1.06026e-13, -499.869, -865.798, 249.934, -865.798, -432.899, 432.899, -865.798, -249.934, 749.803, -499.869, -432.899, 499.869, -865.798, 3.06071e-14, 432.899, -865.798, -249.934, 0, -999.738, 0, 432.899, -865.798, -249.934, 249.934, -865.798, -432.899, 0, -999.738, 0, 249.934, -865.798, -432.899, 6.12143e-14, -865.798, -499.869, 0, -999.738, 0, 749.803, -499.869, -432.899, 432.899, -499.869, -749.803, 249.934, -865.798, -432.899, 432.899, -499.869, -749.803, 1.06026e-13, -499.869, -865.798, 6.12143e-14, -865.798, -499.869, 499.869, 0, 865.798, 0, 0, 999.738, 0, 499.869, 865.798, 865.798, 499.869, 5.30131e-14, 749.803, 499.869, 432.899, 432.899, 865.798, 249.934, 432.899, 865.798, 249.934, 499.869, 865.798, 3.06071e-14, 865.798, 499.869, 5.30131e-14, 432.899, 499.869, 749.803, 749.803, 499.869, 432.899, 865.798, 0, 499.869, 865.798, 0, 499.869, 499.869, 0, 865.798, 432.899, 499.869, 749.803, 749.803, 499.869, 432.899, 865.798, 499.869, 5.30131e-14, 999.738, 0, 6.12143e-14, 999.738, 0, 6.12143e-14, 865.798, 0, 499.869, 749.803, 499.869, 432.899, 749.803, 499.869, 432.899, 432.899, 499.869, 749.803, 249.934, 865.798, 432.899, 0, 865.798, 499.869, 249.934, 865.798, 432.899, 432.899, 499.869, 749.803, 432.899, 499.869, 749.803, 0, 499.869, 865.798, 0, 865.798, 499.869, 499.869, 865.798, 3.06071e-14, 432.899, 865.798, 249.934, 0, 999.738, 0, 249.934, 865.798, 432.899, 432.899, 865.798, 249.934, 749.803, 499.869, 432.899, 249.934, 865.798, 432.899, 0, 865.798, 499.869, 0, 999.738, 0, 432.899, 865.798, 249.934, 249.934, 865.798, 432.899, 0, 999.738, 0, 0, 499.869, 865.798, 432.899, 499.869, 749.803, 499.869, 0, 865.798, 6.12143e-14, -865.798, -499.869, 249.934, -865.798, -432.899, 432.899, -499.869, -749.803, 749.803, 499.869, -432.899, 865.798, 499.869, 5.30131e-14, 499.869, 865.798, 3.06071e-14, 499.869, 865.798, 3.06071e-14, 432.899, 865.798, -249.934, 749.803, 499.869, -432.899, 432.899, 499.869, -749.803, 749.803, 499.869, -432.899, 432.899, 865.798, -249.934, 865.798, 499.869, 5.30131e-14, 749.803, 499.869, -432.899, 865.798, 0, -499.869, 865.798, 0, -499.869, 999.738, 0, 6.12143e-14, 865.798, 499.869, 5.30131e-14, 749.803, 499.869, -432.899, 432.899, 499.869, -749.803, 499.869, 0, -865.798, 499.869, 0, -865.798, 865.798, 0, -499.869, 749.803, 499.869, -432.899, 432.899, 865.798, -249.934, 499.869, 865.798, 3.06071e-14, 0, 999.738, 0, 432.899, 865.798, -249.934, 249.934, 865.798, -432.899, 432.899, 499.869, -749.803, 249.934, 865.798, -432.899, 432.899, 865.798, -249.934, 0, 999.738, 0, 6.12143e-14, 865.798, -499.869, 249.934, 865.798, -432.899, 0, 999.738, 0, 1.06026e-13, 499.869, -865.798, 432.899, 499.869, -749.803, 249.934, 865.798, -432.899, 249.934, 865.798, -432.899, 6.12143e-14, 865.798, -499.869, 1.06026e-13, 499.869, -865.798, 1.22429e-13, 0, -999.738, 499.869, 0, -865.798, 432.899, 499.869, -749.803, -865.798, -499.869, -1.59039e-13, -749.803, -499.869, 432.899, -432.899, -865.798, 249.934, -499.869, 0, 865.798, 0, 0, 999.738, 0, -499.869, 865.798, 0, -499.869, 865.798, -432.899, -499.869, 749.803, -499.869, 0, 865.798, -432.899, -499.869, 749.803, 0, -499.869, 865.798, 0, -865.798, 499.869, 0, -865.798, 499.869, -249.934, -865.798, 432.899, -432.899, -499.869, 749.803, -749.803, -499.869, 432.899, -432.899, -499.869, 749.803, -249.934, -865.798, 432.899, -249.934, -865.798, 432.899, 0, -865.798, 499.869, 0, -999.738, 0, -432.899, -865.798, 249.934, -249.934, -865.798, 432.899, 0, -999.738, 0, -249.934, -865.798, 432.899, -432.899, -865.798, 249.934, -749.803, -499.869, 432.899, -499.869, -865.798, -9.18214e-14, -432.899, -865.798, 249.934, 0, -999.738, 0, -865.798, 0, 499.869, -499.869, 0, 865.798, -432.899, -499.869, 749.803, -432.899, -499.869, 749.803, -749.803, -499.869, 432.899, -865.798, 0, 499.869, -999.738, 0, -1.83643e-13, -865.798, 0, 499.869, -749.803, -499.869, 432.899, -749.803, -499.869, 432.899, -865.798, -499.869, -1.59039e-13, -999.738, 0, -1.83643e-13, -432.899, -865.798, 249.934, -499.869, -865.798, -9.18214e-14, -865.798, -499.869, -1.59039e-13, -865.798, 0, -499.869, -499.869, 0, -865.798, -432.899, 499.869, -749.803, -432.899, -499.869, -749.803, 1.06026e-13, -499.869, -865.798, 1.22429e-13, 0, -999.738, 1.22429e-13, 0, -999.738, -499.869, 0, -865.798, -432.899, -499.869, -749.803, -249.934, -865.798, -432.899, -432.899, -865.798, -249.934, 0, -999.738, 0, 6.12143e-14, -865.798, -499.869, -249.934, -865.798, -432.899, 0, -999.738, 0, -432.899, -865.798, -249.934, -249.934, -865.798, -432.899, -432.899, -499.869, -749.803, -432.899, -865.798, -249.934, -499.869, -865.798, -9.18214e-14, 0, -999.738, 0, -249.934, -865.798, -432.899, 6.12143e-14, -865.798, -499.869, 1.06026e-13, -499.869, -865.798, 1.06026e-13, -499.869, -865.798, -432.899, -499.869, -749.803, -249.934, -865.798, -432.899, -865.798, 0, -499.869, -999.738, 0, -1.83643e-13, -865.798, -499.869, -1.59039e-13, -865.798, -499.869, -1.59039e-13, -749.803, -499.869, -432.899, -865.798, 0, -499.869, -499.869, 0, -865.798, -865.798, 0, -499.869, -749.803, -499.869, -432.899, -749.803, -499.869, -432.899, -432.899, -499.869, -749.803, -499.869, 0, -865.798, -499.869, -865.798, -9.18214e-14, -432.899, -865.798, -249.934, -749.803, -499.869, -432.899, -749.803, -499.869, -432.899, -865.798, -499.869, -1.59039e-13, -499.869, -865.798, -9.18214e-14, -865.798, 0, 499.869, -999.738, 0, -1.83643e-13, -865.798, 499.869, -1.59039e-13, -249.934, 865.798, 432.899, 0, 865.798, 499.869, 0, 499.869, 865.798, 0, 499.869, 865.798, -432.899, 499.869, 749.803, -249.934, 865.798, 432.899, 0, 865.798, 499.869, -249.934, 865.798, 432.899, 0, 999.738, 0, -249.934, 865.798, 432.899, -432.899, 865.798, 249.934, 0, 999.738, 0, -432.899, 865.798, 249.934, -499.869, 865.798, -9.18214e-14, 0, 999.738, 0, -432.899, 865.798, 249.934, -249.934, 865.798, 432.899, -432.899, 499.869, 749.803, -432.899, 499.869, 749.803, 0, 499.869, 865.798, 0, 0, 999.738, 0, 0, 999.738, -499.869, 0, 865.798, -432.899, 499.869, 749.803, -432.899, 499.869, 749.803, -749.803, 499.869, 432.899, -432.899, 865.798, 249.934, -499.869, 865.798, -9.18214e-14, -432.899, 865.798, 249.934, -749.803, 499.869, 432.899, -749.803, 499.869, 432.899, -865.798, 499.869, -1.59039e-13, -499.869, 865.798, -9.18214e-14, -749.803, 499.869, 432.899, -432.899, 499.869, 749.803, -499.869, 0, 865.798, -499.869, 0, 865.798, -865.798, 0, 499.869, -749.803, 499.869, 432.899, -865.798, 499.869, -1.59039e-13, -749.803, 499.869, 432.899, -865.798, 0, 499.869, -432.899, -499.869, -749.803, -749.803, -499.869, -432.899, -432.899, -865.798, -249.934, -432.899, 865.798, -249.934, -249.934, 865.798, -432.899, 0, 999.738, 0, -249.934, 865.798, -432.899, 6.12143e-14, 865.798, -499.869, 0, 999.738, 0, -499.869, 865.798, -9.18214e-14, -432.899, 865.798, -249.934, 0, 999.738, 0, -249.934, 865.798, -432.899, -432.899, 865.798, -249.934, -749.803, 499.869, -432.899, 6.12143e-14, 865.798, -499.869, -249.934, 865.798, -432.899, -432.899, 499.869, -749.803, -432.899, 499.869, -749.803, 1.06026e-13, 499.869, -865.798, 6.12143e-14, 865.798, -499.869, -749.803, 499.869, -432.899, -432.899, 499.869, -749.803, -249.934, 865.798, -432.899, -499.869, 0, -865.798, 1.22429e-13, 0, -999.738, 1.06026e-13, 499.869, -865.798, 1.06026e-13, 499.869, -865.798, -432.899, 499.869, -749.803, -499.869, 0, -865.798, -432.899, 865.798, -249.934, -499.869, 865.798, -9.18214e-14, -865.798, 499.869, -1.59039e-13, -865.798, 499.869, -1.59039e-13, -749.803, 499.869, -432.899, -432.899, 865.798, -249.934, -749.803, 499.869, -432.899, -865.798, 499.869, -1.59039e-13, -999.738, 0, -1.83643e-13, -999.738, 0, -1.83643e-13, -865.798, 0, -499.869, -749.803, 499.869, -432.899, -432.899, 499.869, -749.803, -749.803, 499.869, -432.899, -865.798, 0, -499.869)
+backface_collision = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rn2f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnuhc"]
 
-[node name="LevelTest" type="Node3D" node_paths=PackedStringArray("main_panel", "guide_panel", "credits_panel", "map_panel", "win_panel")]
-process_mode = 3
+[sub_resource type="Animation" id="Animation_re6lg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nuslc"]
+resource_name = "loop"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(2.92817, 8),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pn8n"]
+_data = {
+&"RESET": SubResource("Animation_re6lg"),
+&"loop": SubResource("Animation_nuslc")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_re6lg"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="LevelTest" type="Node3D" node_paths=PackedStringArray("main_panel", "guide_panel", "credits_panel", "map_panel", "win_panel", "gameover_panel", "hud_main", "hud_oob", "hud_biscuit", "spawner", "player")]
+process_mode = 1
 script = ExtResource("1_plvai")
 main_panel = NodePath("CanvasLayer/CenterContainer/Main")
 guide_panel = NodePath("CanvasLayer/CenterContainer/Guide")
 credits_panel = NodePath("CanvasLayer/CenterContainer/Credits")
 map_panel = NodePath("CanvasLayer/CenterContainer/Map")
 win_panel = NodePath("CanvasLayer/CenterContainer/Win")
+gameover_panel = NodePath("CanvasLayer/CenterContainer/GameOver")
+hud_main = NodePath("CanvasLayer/CenterContainer/HUD/HUD_content")
+hud_oob = NodePath("CanvasLayer/CenterContainer/HUD/HUD_content/CenterContainer/OutOfBound")
+hud_biscuit = NodePath("CanvasLayer/CenterContainer/HUD/HUD_content/MarginContainer/HBoxContainer/BiscuitScore")
+spawner = NodePath("Spawner")
+player = NodePath("DummyPlayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n44uc")
@@ -60,6 +116,15 @@ environment = SubResource("Environment_n44uc")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 511.483, 0)
 visible = false
 shadow_enabled = true
+
+[node name="DummyPlayer" parent="." instance=ExtResource("13_vnuhc")]
+process_mode = 1
+transform = Transform3D(0.957496, 0, -0.288447, 0, 1, 0, 0.288447, 0, 0.957496, 0, 1382.72, 0)
+collision_layer = 3
+collision_mask = 3
+max_speed = 88.0
+throttle_delta = 41.0
+acceleration = 8.0
 
 [node name="Boundary" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1382.72, 0)
@@ -137,6 +202,50 @@ layout_mode = 2
 texture_normal = ExtResource("16_04equ")
 
 [node name="Credits" type="TextureButton" parent="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start"]
+layout_mode = 2
+texture_normal = ExtResource("17_4xcco")
+
+[node name="GameOver" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6rn2f")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/GameOver"]
+layout_mode = 2
+texture = ExtResource("18_vnuhc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/GameOver"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/GameOver/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = 75
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/GameOver/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.729412, 0.678431, 0, 1)
+theme_override_fonts/font = ExtResource("5_vkcgd")
+theme_override_font_sizes/font_size = 48
+text = "MEH"
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/CenterContainer/GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="Start" type="HBoxContainer" parent="CanvasLayer/CenterContainer/GameOver/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Restart" type="TextureButton" parent="CanvasLayer/CenterContainer/GameOver/VBoxContainer/MarginContainer3/Start"]
+layout_mode = 2
+texture_normal = ExtResource("16_04equ")
+
+[node name="Credits" type="TextureButton" parent="CanvasLayer/CenterContainer/GameOver/VBoxContainer/MarginContainer3/Start"]
 layout_mode = 2
 texture_normal = ExtResource("17_4xcco")
 
@@ -320,13 +429,50 @@ layout_mode = 2
 texture = ExtResource("26_plnnl")
 stretch_mode = 2
 
-[node name="HUD" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
+[node name="HUD" type="Node" parent="CanvasLayer/CenterContainer"]
+
+[node name="HUD_content" type="VBoxContainer" parent="CanvasLayer/CenterContainer/HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/HUD/HUD_content"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer/HUD/HUD_content/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/HUD"]
+[node name="BiscuitScore2" type="Label" parent="CanvasLayer/CenterContainer/HUD/HUD_content/MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(3.56168e-06, 0.582465, 0, 1)
 theme_override_fonts/font = ExtResource("5_vkcgd")
+theme_override_font_sizes/font_size = 48
+text = "Biscuit: "
+
+[node name="BiscuitScore" type="Label" parent="CanvasLayer/CenterContainer/HUD/HUD_content/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(3.56168e-06, 0.582465, 0, 1)
+theme_override_fonts/font = ExtResource("5_vkcgd")
+theme_override_font_sizes/font_size = 48
+text = "0/5"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/HUD/HUD_content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OutOfBound" type="Label" parent="CanvasLayer/CenterContainer/HUD/HUD_content/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_vkcgd")
+theme_override_font_sizes/font_size = 36
 text = "OUT OF BOUND"
+
 
 [node name="Player" parent="." instance=ExtResource("13_vnuhc")]
 max_speed = 50.0
@@ -334,10 +480,134 @@ max_speed = 50.0
 [node name="DummyEnemy" parent="." instance=ExtResource("17_nuslc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.076)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/CenterContainer/HUD/HUD_content/CenterContainer/OutOfBound"]
+libraries = {
+&"": SubResource("AnimationLibrary_1pn8n")
+}
+autoplay = "loop"
+
+[node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("enemy_spawn_points", "obstacle_spawn_points", "biscuit_spawn_points")]
+script = ExtResource("17_nuslc")
+enemy = ExtResource("18_re6lg")
+enemy_spawn_points = [NodePath("spawn_areas/enemy1"), NodePath("spawn_areas/enemy2"), NodePath("spawn_areas/enemy3"), NodePath("spawn_areas/enemy4"), NodePath("spawn_areas/enemy5"), NodePath("spawn_areas/enemy6"), NodePath("spawn_areas/enemy7"), NodePath("spawn_areas/enemy8")]
+obstacle = Array[Resource]([ExtResource("19_vnuhc")])
+obstacle_spawn_points = [NodePath("spawn_areas/obstacles1"), NodePath("spawn_areas/obstacles8"), NodePath("spawn_areas/obstacles6"), NodePath("spawn_areas/obstacles7"), NodePath("spawn_areas/obstacles2"), NodePath("spawn_areas/obstacles3"), NodePath("spawn_areas/obstacles4"), NodePath("spawn_areas/obstacles5")]
+biscuit = ExtResource("20_sgyyf")
+biscuit_spawn_points = [NodePath("spawn_areas/biscuit1"), NodePath("spawn_areas/biscuit2"), NodePath("spawn_areas/biscuit3"), NodePath("spawn_areas/biscuit4")]
+
+[node name="spawn_areas" type="Node3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1382.72, 0)
+
+[node name="enemy1" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 431.456, 387.904, 415.77)
+radius = 247.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="enemy2" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -310.591, 387.904, 320.802)
+radius = 247.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="enemy3" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -310.591, -383.789, 320.802)
+radius = 247.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="enemy4" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 421.943, -383.789, 415.77)
+radius = 247.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="enemy5" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 321.494, 387.904, -293.268)
+radius = 247.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="enemy6" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -450.544, 387.904, -403.23)
+radius = 247.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="enemy7" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -450.544, -383.789, -403.23)
+radius = 247.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="enemy8" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 311.98, -383.789, -293.268)
+radius = 247.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="biscuit1" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -447.76, -23.9124, -8.3653)
+radius = 322.803
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="biscuit2" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 486.92, -23.9124, -8.3653)
+radius = 328.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="biscuit3" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91254, 550.891, -458.212)
+radius = 322.803
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="biscuit4" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91254, -543.735, 436.482)
+radius = 322.803
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="obstacles1" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+radius = 368.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="obstacles8" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+radius = 940.969
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="obstacles6" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 504.827, 0)
+radius = 368.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="obstacles7" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -534.817, 0)
+radius = 368.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="obstacles2" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -529.819, 0, 0)
+radius = 368.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="obstacles3" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.99658, 0, -419.856)
+radius = 368.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="obstacles4" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 494.831, 0, -19.9932)
+radius = 368.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+[node name="obstacles5" type="CSGSphere3D" parent="Spawner/spawn_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9917, 0, 409.86)
+radius = 368.0
+material = SubResource("StandardMaterial3D_re6lg")
+
+
 [connection signal="body_entered" from="Boundary/soft bound" to="." method="_on_soft_bound_body_entered"]
+[connection signal="body_exited" from="Boundary/soft bound" to="." method="_on_soft_bound_body_exited"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/GameOver/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/GameOver/VBoxContainer/MarginContainer3/Start/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Main/VBoxContainer/MarginContainer/Start/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Main/VBoxContainer/MarginContainer/Start/Guide" to="." method="_on_guide_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Guide/VBoxContainer/MarginContainer3/Start/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Credits/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
+
+
+[editable path="DummyPlayer"]
+

@@ -19,6 +19,7 @@ var target_speed:float = 0
 var turn_input:float= 0
 var pitch_input:float= 0
 
+
 var health = 30
 var shootDelay = 0.1
 var canShoot:bool = true
@@ -26,6 +27,9 @@ var canShoot:bool = true
 
 var projectile = load("res://assets/prefabs/projectile.tscn")
 var instance
+
+signal dying_char
+
 
 @onready var animation_tree = %AnimationTree
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
@@ -87,6 +91,7 @@ func moving():
 
 func idle():
 	state_machine.travel("idle")
+
 	
 
 func getHealth():
@@ -97,3 +102,12 @@ func setHealth(x):
 
 func getPosition():
 	return mesh_body.position
+
+
+func dying_prep():
+	dying_char.emit()
+	await get_tree().create_timer(0.1).timeout
+	visible = false
+	
+	#queue_free()
+
