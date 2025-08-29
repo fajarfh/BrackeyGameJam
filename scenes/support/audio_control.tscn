@@ -13,14 +13,11 @@ amb = NodePath("AudioStreamPlayer3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_0mblk")
-bus = &"BGM"
 parameters/looping = true
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_thwwy")
-bus = &"AMB"
 parameters/looping = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_d3cxp")
-bus = &"SFX"
