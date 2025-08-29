@@ -1,7 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://ca7p1844xk4hw"]
+[gd_scene load_steps=21 format=3 uid="uid://ca7p1844xk4hw"]
 
 [ext_resource type="Script" uid="uid://ba7wk2hche316" path="res://scripts/player.gd" id="1_jumf5"]
 [ext_resource type="PackedScene" uid="uid://dq0m5utvrp6ps" path="res://assets/prefabs/porta_potty.tscn" id="2_16d5g"]
+[ext_resource type="PackedScene" uid="uid://bxn422w1hc10q" path="res://assets/prefabs/gun.tscn" id="3_ilqrk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ilqrk"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_0ph0n"]
+sky_material = SubResource("ProceduralSkyMaterial_ilqrk")
+
+[sub_resource type="Environment" id="Environment_af3jp"]
+background_mode = 2
+sky = SubResource("Sky_0ph0n")
+tonemap_mode = 2
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e73ws"]
 points = PackedVector3Array(0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, 0.5, -1, -0.5, -0.5, -1)
@@ -98,16 +111,25 @@ node_connections = [&"output", 0, &"StateMachine"]
 [node name="DummyPlayer" type="CharacterBody3D" node_paths=PackedStringArray("mesh_body", "player_cam")]
 motion_mode = 1
 script = ExtResource("1_jumf5")
-max_speed = 100.0
 turn_speed = 1.0
 pitch_speed = 1.0
 mesh_body = NodePath("MeshInstance3D")
 player_cam = NodePath("SpringArm3D/Camera3D")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_af3jp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
 [node name="MeshInstance3D" type="Node3D" parent="."]
 
 [node name="PortaPotty" parent="MeshInstance3D" instance=ExtResource("2_16d5g")]
 transform = Transform3D(8.88178e-16, 2.23517e-08, -0.487427, 0.45, -2.76406e-08, 0, -1.96701e-08, -0.632344, -1.49012e-08, 0.141441, -0.0439606, 1.01294)
+
+[node name="dummyGun" parent="MeshInstance3D" instance=ExtResource("3_ilqrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.076056, 0.00366574, -1.5474)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_e73ws")

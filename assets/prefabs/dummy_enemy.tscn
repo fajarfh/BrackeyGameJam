@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://3k6vl5k7xrwp"]
+
+[ext_resource type="PackedScene" uid="uid://ca7p1844xk4hw" path="res://assets/prefabs/Player.tscn" id="1_1ugwo"]
+[ext_resource type="Script" uid="uid://db8gsi3xe01qa" path="res://scripts/dummy_enemy.gd" id="2_frega"]
+
+[node name="DummyEnemy" instance=ExtResource("1_1ugwo")]
+script = ExtResource("2_frega")

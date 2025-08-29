@@ -1,5 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://isje56hhwfru"]
 
+
 [ext_resource type="Script" uid="uid://hopjdwk5vj50" path="res://scripts/game_manager.gd" id="1_plvai"]
 [ext_resource type="PackedScene" uid="uid://oue177qrdac0" path="res://assets/prefabs/route_1.tscn" id="3_7dxvt"]
 [ext_resource type="FontFile" uid="uid://kh5m2a1qw3ow" path="res://assets/ZenDots-Regular.ttf" id="5_vkcgd"]
@@ -10,8 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bufnxuhqwh5i3" path="res://assets/UI/batch_g12_ui_.png" id="16_re6lg"]
 [ext_resource type="Texture2D" uid="uid://dqcrpe52ui7gn" path="res://assets/UI/batch_g13_ui_.png" id="17_1pn8n"]
 [ext_resource type="Texture2D" uid="uid://b2cqf4pmto6ks" path="res://assets/UI/batch_g52_ui_.png" id="17_4xcco"]
+
+[ext_resource type="PackedScene" uid="uid://3k6vl5k7xrwp" path="res://assets/prefabs/dummy_enemy.tscn" id="17_nuslc"]
+
 [ext_resource type="Script" uid="uid://dtsm5sv0lhv0p" path="res://scripts/spawner.gd" id="17_nuslc"]
 [ext_resource type="PackedScene" uid="uid://byh1qyq76iwl4" path="res://assets/prefabs/tesitem1.tscn" id="18_re6lg"]
+
 [ext_resource type="Texture2D" uid="uid://cwg647s38k1en" path="res://assets/UI/batch_g43_ui_.png" id="18_vnuhc"]
 [ext_resource type="Texture2D" uid="uid://buu10ilsgtvnh" path="res://assets/UI/batch_g23_ui_.png" id="19_sgyyf"]
 [ext_resource type="PackedScene" uid="uid://dyx7buxihjjae" path="res://assets/prefabs/tesitem2.tscn" id="19_vnuhc"]
@@ -468,6 +473,13 @@ theme_override_fonts/font = ExtResource("5_vkcgd")
 theme_override_font_sizes/font_size = 36
 text = "OUT OF BOUND"
 
+
+[node name="Player" parent="." instance=ExtResource("13_vnuhc")]
+max_speed = 50.0
+
+[node name="DummyEnemy" parent="." instance=ExtResource("17_nuslc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.076)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/CenterContainer/HUD/HUD_content/CenterContainer/OutOfBound"]
 libraries = {
 &"": SubResource("AnimationLibrary_1pn8n")
@@ -584,6 +596,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9917, 0, 409.86)
 radius = 368.0
 material = SubResource("StandardMaterial3D_re6lg")
 
+
 [connection signal="body_entered" from="Boundary/soft bound" to="." method="_on_soft_bound_body_entered"]
 [connection signal="body_exited" from="Boundary/soft bound" to="." method="_on_soft_bound_body_exited"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
@@ -595,4 +608,6 @@ material = SubResource("StandardMaterial3D_re6lg")
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Guide/VBoxContainer/MarginContainer3/Start/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Credits/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
 
+
 [editable path="DummyPlayer"]
+
