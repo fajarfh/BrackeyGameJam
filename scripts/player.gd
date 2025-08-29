@@ -24,6 +24,13 @@ var health = 30
 var shootDelay = 0.1
 var canShoot:bool = true
 
+#flags
+var is_damaged:bool = false
+var is_dead:bool = false
+var is_attacked:bool = false
+var is_turning:bool = false
+var is_accalarate:bool = false
+
 
 
 var projectile = load("res://assets/prefabs/projectile.tscn")
@@ -34,6 +41,7 @@ var instance
 @onready var gun = $MeshInstance3D/dummyGun
 @onready var gun_barrel = $MeshInstance3D/dummyGun/RayCast3D
 @onready var detection_area = $Area3D
+@onready var bullet = $projectile
 
 signal object_behind_camera(object_position: Vector3, object_node: Node3D)
 signal object_left_detection(object_node: Node3D)
@@ -98,7 +106,7 @@ func _physics_process(delta):
 
 	
 	check_objects_behind_camera()
-	print(get_objects_behind_camera())
+	print(getHealth())
 
 func moving():
 	state_machine.travel("static")
@@ -117,8 +125,7 @@ func getPosition():
 	return mesh_body.position
 
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	pass # Replace with function body.
+
 
 
 func _on_detection_area_body_entered(body):
@@ -214,3 +221,9 @@ func raycast_detection() -> Array:
 				})
 	
 	return detected_objects
+
+
+
+func _on_collision_check_body_entered(body: Node3D) -> void:
+	if bullet:
+		setHealth(health-bullet.damage)
