@@ -329,10 +329,18 @@ theme_override_fonts/font = ExtResource("5_vkcgd")
 text = "OUT OF BOUND"
 
 [node name="Player" parent="." instance=ExtResource("13_vnuhc")]
-max_speed = 50.0
 
 [node name="DummyEnemy" parent="." instance=ExtResource("17_nuslc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13656, 0, -13.076)
+
+[node name="DummyEnemy2" parent="." instance=ExtResource("17_nuslc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.5202)
+
+[node name="DummyEnemy3" parent="." instance=ExtResource("17_nuslc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97971, 1.36027, -13.0763)
+
+[node name="DummyEnemy4" parent="." instance=ExtResource("17_nuslc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3023, 0, -13.076)
 
 [connection signal="body_entered" from="Boundary/soft bound" to="." method="_on_soft_bound_body_entered"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Win/VBoxContainer/MarginContainer3/Start/Restart" to="." method="_on_restart_pressed"]
